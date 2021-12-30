@@ -4,12 +4,12 @@ metadata:
   name: my-service # Name of the service
 spec:
   selector:
-    app: nginx    # Run on any pod with label - app: nginx
+    app: spring    # Run on any pod with label - app: spring
   ports:          # Map incoming port to target port
   - name: http    # Setting multiple ports listterns 
     protocol: TCP
     port: 80
-    targetPort: 9376
+    targetPort: 8080
   - name: https
     protocol: TCP
     port: 443
@@ -23,7 +23,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: nginx
+      app: spring
 
   replicas: 2 # tells deployment to run 2 pods matching the template using the ReplicaSet
   strategy:
@@ -37,7 +37,7 @@ spec:
       # unlike pod-nginx.yaml, the name is not included in the meta data as a unique name is
       # generated from the deployment name
       labels:
-        app: nginx
+        app: spring
     spec:
       containers:
       - name: springmusic
